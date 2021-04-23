@@ -246,7 +246,9 @@ RenderWindowOgreAdapter::setBackgroundColor(
   RenderWindow * render_window,
   const Ogre::ColourValue * color)
 {
+  std::cout << "setBackgroundColor adasdasdasd" << std::endl;
   render_window->impl_->setBackgroundColor(*color);
+  std::cout << "done " << std::endl;
 }
 
 Ogre::Light *

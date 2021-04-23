@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "./panel_factory.hpp"
+#include "rviz_common/panel_factory.hpp"
 
 #include <string>
 

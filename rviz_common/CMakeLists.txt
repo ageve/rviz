@@ -109,6 +109,7 @@ set(rviz_common_headers_to_moc
   include/rviz_common/properties/vector_property.hpp
   include/rviz_common/render_panel.hpp
   include/rviz_common/visualization_manager.hpp
+  include/rviz_common/panel_factory.hpp
   src/rviz_common/scaled_image_widget.hpp
   src/rviz_common/screenshot_dialog.hpp
   include/rviz_common/interaction/selection_manager.hpp
