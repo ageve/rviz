@@ -83,7 +83,7 @@
 #include "./widget_geometry_change_detector.hpp"
 #include "./yaml_config_writer.hpp"
 
-// #include "./displays_panel.hpp"
+// #include "rviz_common/displays_panel.hpp"
 #include "./help_panel.hpp"
 // #include "./interaction/selection_manager.hpp"
 // #include "./selection_panel.hpp"

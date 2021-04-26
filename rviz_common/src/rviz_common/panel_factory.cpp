@@ -33,7 +33,7 @@
 
 #include <string>
 
-#include "./displays_panel.hpp"
+#include "rviz_common/displays_panel.hpp"
 #include "./help_panel.hpp"
 #include "./selection_panel.hpp"
 #include "./time_panel.hpp"

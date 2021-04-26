@@ -63,7 +63,7 @@
 #include "rviz_common/display.hpp"
 #include "./display_factory.hpp"
 #include "rviz_common/display_group.hpp"
-#include "./displays_panel.hpp"
+#include "rviz_common/displays_panel.hpp"
 #include "frame_manager.hpp"
 #include "rviz_common/load_resource.hpp"
 // #include "./ogre_helpers/ogre_render_queue_clearer.hpp"
