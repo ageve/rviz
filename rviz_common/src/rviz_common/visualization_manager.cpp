@@ -612,17 +612,12 @@ double VisualizationManager::getROSTimeElapsed()
 void VisualizationManager::updateBackgroundColor()
 {
   using rviz_rendering::RenderWindowOgreAdapter;
-  std::cout << "Ei" << std::endl;
   auto ogre_color = rviz_common::properties::qtToOgre(background_color_property_->getColor());
-  std::cout << "getColor" << std::endl;
   rviz_rendering::RenderWindow* render_window = render_panel_->getRenderWindow();
-  std::cout << "getRenderWindow" << std::endl;
   rviz_rendering::RenderWindowOgreAdapter::setBackgroundColor(
     render_panel_->getRenderWindow(),
     &ogre_color);
-  std::cout << "setBackgroundColor" << std::endl;
   queueRender();
-  std::cout << "queueRender" << std::endl;
 }
 
 void VisualizationManager::updateFps()

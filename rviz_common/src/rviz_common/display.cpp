@@ -302,11 +302,8 @@ void Display::save(Config config) const
 
 void Display::setEnabled(bool enabled)
 {
-  std::cout << "Going to Enabled" << std::endl;
-  if (enabled == isEnabled()) {std::cout << "It was already Enabled" << std::endl; return;}
-  std::cout << "Going to set Enabled to " << enabled << std::endl;
+  if (enabled == isEnabled()) {return;}
   setBool(enabled);
-  std::cout << "Value changed to Enabled" << std::endl;
 }
 
 void Display::disable()
