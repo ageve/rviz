@@ -69,13 +69,13 @@
 #include "rviz_common/render_panel.hpp"
 #include "rviz_common/tool.hpp"
 #include "rviz_common/yaml_config_reader.hpp"
+#include "rviz_common/panel_factory.hpp"
 #include "rviz_rendering/render_window.hpp"
 
 #include "./env_config.hpp"
 #include "./failed_panel.hpp"
 #include "./loading_dialog.hpp"
 #include "./new_object_dialog.hpp"
-#include "./panel_factory.hpp"
 #include "./screenshot_dialog.hpp"
 #include "./splash_screen.hpp"
 #include "./tool_manager.hpp"
@@ -83,7 +83,7 @@
 #include "./widget_geometry_change_detector.hpp"
 #include "./yaml_config_writer.hpp"
 
-// #include "./displays_panel.hpp"
+// #include "rviz_common/displays_panel.hpp"
 #include "./help_panel.hpp"
 // #include "./interaction/selection_manager.hpp"
 // #include "./selection_panel.hpp"
@@ -164,6 +164,11 @@ VisualizationFrame::~VisualizationFrame()
   }
 
   delete panel_factory_;
+}
+
+rviz_common::RenderPanel * VisualizationFrame::getRenderPanel()
+{
+  return render_panel_;
 }
 
 rviz_rendering::RenderWindow * VisualizationFrame::getRenderWindow()

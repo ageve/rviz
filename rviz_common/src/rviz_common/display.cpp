@@ -303,7 +303,7 @@ void Display::save(Config config) const
 void Display::setEnabled(bool enabled)
 {
   if (enabled == isEnabled()) {return;}
-  setValue(enabled);
+  setBool(enabled);
 }
 
 void Display::disable()

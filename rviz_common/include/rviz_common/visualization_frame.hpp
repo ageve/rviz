@@ -89,6 +89,7 @@ public:
     ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node, QWidget * parent = nullptr);
   ~VisualizationFrame() override;
 
+  rviz_common::RenderPanel * getRenderPanel();
   rviz_rendering::RenderWindow * getRenderWindow();
 
   /// Set the QApplication, this should be called directly after construction.
