@@ -1,3 +1,6 @@
+# AGEVE
+¡OJO! Al compilar hay distintos COLCON-IGNORE, tener presente. 
+
 # RViz
 
 This branch is currently contained in the main `ros2.repos` file of ROS 2 and can be used for ROS 2.
