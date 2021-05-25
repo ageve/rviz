@@ -28,7 +28,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "./tool_manager.hpp"
+#include "rviz_common/tool_manager.hpp"
 
 #include <cassert>
 #include <vector>
@@ -190,7 +190,6 @@ void ToolManager::setCurrentTool(Tool * tool)
   if (current_tool_) {
     current_tool_->activate();
   }
-
   Q_EMIT toolChanged(current_tool_);
 }
 
@@ -226,6 +225,7 @@ void ToolManager::closeTool()
 
 Tool * ToolManager::addTool(const QString & class_id)
 {
+  std::cout << "Going to add the Tool: " << class_id.toStdString() << std::endl;
   return addTool(factory_->getPluginInfo(class_id));
 }
 
