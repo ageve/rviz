@@ -78,7 +78,7 @@
 #include "./new_object_dialog.hpp"
 #include "./screenshot_dialog.hpp"
 #include "./splash_screen.hpp"
-#include "./tool_manager.hpp"
+#include "rviz_common/tool_manager.hpp"
 #include "rviz_common/visualization_manager.hpp"
 #include "./widget_geometry_change_detector.hpp"
 #include "./yaml_config_writer.hpp"
@@ -164,6 +164,11 @@ VisualizationFrame::~VisualizationFrame()
   }
 
   delete panel_factory_;
+}
+
+QToolBar * VisualizationFrame::getToolbar()
+{
+  return toolbar_;
 }
 
 rviz_common::RenderPanel * VisualizationFrame::getRenderPanel()
@@ -1071,6 +1076,7 @@ void VisualizationFrame::onRecentConfigSelected()
 
 void VisualizationFrame::addTool(Tool * tool)
 {
+  std::cout << "Added Tool to visualization frame " << tool->getClassId().toStdString()<< std::endl;
   QAction * action = new QAction(tool->getName(), toolbar_actions_);
   action->setIcon(tool->getIcon());
   action->setIconText(tool->getName());
@@ -1085,7 +1091,8 @@ void VisualizationFrame::addTool(Tool * tool)
 void VisualizationFrame::onToolbarActionTriggered(QAction * action)
 {
   Tool * tool = action_to_tool_map_[action];
-
+  std::cout << "onToolbarActionTriggered: " << action << std::endl;
+  std::cout << "onToolbarActionTriggered: " << tool << std::endl;
   if (tool) {
     manager_->getToolManager()->setCurrentTool(tool);
   }
@@ -1100,6 +1107,14 @@ void VisualizationFrame::onToolbarRemoveTool(QAction * remove_tool_menu_action)
       manager_->getToolManager()->removeTool(i);
       return;
     }
+  }
+}
+
+void VisualizationFrame::removeAllTools()
+{
+  for (int i = 0; i < manager_->getToolManager()->numTools(); i++) {
+    Tool * tool = manager_->getToolManager()->getTool(i);
+    manager_->getToolManager()->removeTool(i);
   }
 }
 
