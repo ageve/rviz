@@ -225,7 +225,6 @@ void ToolManager::closeTool()
 
 Tool * ToolManager::addTool(const QString & class_id)
 {
-  std::cout << "Going to add the Tool: " << class_id.toStdString() << std::endl;
   return addTool(factory_->getPluginInfo(class_id));
 }
 

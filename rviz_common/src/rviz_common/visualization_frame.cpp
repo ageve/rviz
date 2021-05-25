@@ -1076,7 +1076,6 @@ void VisualizationFrame::onRecentConfigSelected()
 
 void VisualizationFrame::addTool(Tool * tool)
 {
-  std::cout << "Added Tool to visualization frame " << tool->getClassId().toStdString()<< std::endl;
   QAction * action = new QAction(tool->getName(), toolbar_actions_);
   action->setIcon(tool->getIcon());
   action->setIconText(tool->getName());
@@ -1091,8 +1090,6 @@ void VisualizationFrame::addTool(Tool * tool)
 void VisualizationFrame::onToolbarActionTriggered(QAction * action)
 {
   Tool * tool = action_to_tool_map_[action];
-  std::cout << "onToolbarActionTriggered: " << action << std::endl;
-  std::cout << "onToolbarActionTriggered: " << tool << std::endl;
   if (tool) {
     manager_->getToolManager()->setCurrentTool(tool);
   }
