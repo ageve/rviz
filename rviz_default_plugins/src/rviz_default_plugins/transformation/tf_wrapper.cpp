@@ -120,7 +120,8 @@ std::shared_ptr<tf2_ros::Buffer> TFWrapper::getBuffer()
 void TFWrapper::initialize(
   rclcpp::Clock::SharedPtr clock,
   rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node,
-  bool using_dedicated_thread)
+  bool using_dedicated_thread,
+  std::string ns)
 {
   initializeBuffer(clock, rviz_ros_node.lock()->get_raw_node(), using_dedicated_thread);
   if (using_dedicated_thread) {
@@ -128,7 +129,7 @@ void TFWrapper::initialize(
     // here. Remove this in favor of a multithreaded spinner and ensure that the listener callback
     // queue does not fill up.
     tf_listener_ = std::make_shared<tf2_ros::TransformListener>(
-      *buffer_, true);
+      *buffer_, true, ns);
   } else {
     tf_listener_ = std::make_shared<tf2_ros::TransformListener>(
       *buffer_, rviz_ros_node.lock()->get_raw_node(), false);

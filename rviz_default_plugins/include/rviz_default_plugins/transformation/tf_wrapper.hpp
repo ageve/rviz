@@ -122,7 +122,8 @@ public:
   initialize(
     rclcpp::Clock::SharedPtr clock,
     rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node,
-    bool using_dedicated_thread);
+    bool using_dedicated_thread,
+    std::string ns);
 
   RVIZ_DEFAULT_PLUGINS_PUBLIC
   void

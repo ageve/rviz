@@ -35,6 +35,8 @@
 #include <string>
 #include <vector>
 
+#include <iostream> // TODO: Debug, delete after
+
 #include "rviz_common/factory/pluginlib_factory.hpp"
 #include "./identity_frame_transformer.hpp"
 
@@ -68,9 +70,12 @@ TransformationManager::TransformationManager(
 void TransformationManager::load(const Config & config)
 {
   Config current_config = config.mapGetChild("Current");
+  QString tf_namespace;
+  current_config.mapGetString("Namespace", &tf_namespace);
+  std::cout << "tf_namespace: " << tf_namespace.toStdString() << std::endl;
   QString class_id;
   if (current_config.mapGetString("Class", &class_id)) {
-    setTransformer(factory_->getPluginInfo(class_id));
+    setTransformer(factory_->getPluginInfo(class_id), tf_namespace);
   }
 }
 
@@ -78,6 +83,7 @@ void TransformationManager::save(Config config) const
 {
   Config current_config = config.mapMakeChild("Current");
   current_config.mapSetValue("Class", getCurrentTransformerInfo().id);
+  current_config.mapSetValue("Namespace", QString());
 }
 
 std::vector<PluginInfo> TransformationManager::getAvailableTransformers() const
@@ -95,12 +101,13 @@ PluginInfo TransformationManager::getCurrentTransformerInfo() const
   return factory_->getPluginInfo(current_transformer_->getClassId());
 }
 
-void TransformationManager::setTransformer(const PluginInfo & plugin_info)
+void TransformationManager::setTransformer(const PluginInfo & plugin_info, QString ns)
 {
   auto new_transformer = std::shared_ptr<FrameTransformer>(factory_->make(plugin_info.id));
   if (new_transformer) {
     current_transformer_ = new_transformer;
-    current_transformer_->initialize(rviz_ros_node_, clock_);
+    std::cout << "Going to initialize transformer with: " << ns.toStdString() << std::endl;
+    current_transformer_->initialize(rviz_ros_node_, clock_, ns.toStdString());
 
     Q_EMIT transformerChanged(current_transformer_);
     Q_EMIT configChanged();

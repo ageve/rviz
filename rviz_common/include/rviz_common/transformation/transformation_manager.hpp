@@ -78,7 +78,7 @@ public:
   getCurrentTransformerInfo() const;
 
   void
-  setTransformer(const PluginInfo & plugin_info);
+  setTransformer(const PluginInfo & plugin_info, QString ns = QString());
 
 Q_SIGNALS:
   /// Emitted when the current transformer changes.

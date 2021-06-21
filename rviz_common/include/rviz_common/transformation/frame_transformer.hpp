@@ -86,7 +86,8 @@ public:
   void
   initialize(
     ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node,
-    rclcpp::Clock::SharedPtr clock) = 0;
+    rclcpp::Clock::SharedPtr clock,
+    std::string ns) = 0;
 
   /// Transform a PoseStamped into a given target frame.
   /**

@@ -62,7 +62,8 @@ public:
   void
   initialize(
     rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node,
-    rclcpp::Clock::SharedPtr clock) override;
+    rclcpp::Clock::SharedPtr clock,
+    std::string ns) override;
 
   RVIZ_DEFAULT_PLUGINS_PUBLIC
   void
