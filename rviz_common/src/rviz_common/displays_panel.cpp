@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "displays_panel.hpp"
+#include "rviz_common/displays_panel.hpp"
 
 #include <string>
 

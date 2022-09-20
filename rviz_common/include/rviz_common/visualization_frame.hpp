@@ -89,6 +89,9 @@ public:
     ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node, QWidget * parent = nullptr);
   ~VisualizationFrame() override;
 
+  QToolBar * getToolbar();
+  void removeAllTools();
+  rviz_common::RenderPanel * getRenderPanel();
   rviz_rendering::RenderWindow * getRenderWindow();
 
   /// Set the QApplication, this should be called directly after construction.
@@ -222,6 +225,10 @@ public:
     const QString & class_lookup_name,
     Qt::DockWidgetArea area = Qt::LeftDockWidgetArea,
     bool floating = true);
+
+  QActionGroup * toolbar_actions_;
+  std::map<QAction *, Tool *> action_to_tool_map_;
+  std::map<Tool *, QAction *> tool_to_action_map_;
 
 public Q_SLOTS:
   /// Notification that something would change in the display config if saved.
@@ -488,9 +495,9 @@ protected:
   typedef std::deque<std::string> D_string;
   D_string recent_configs_;
 
-  QActionGroup * toolbar_actions_;
-  std::map<QAction *, Tool *> action_to_tool_map_;
-  std::map<Tool *, QAction *> tool_to_action_map_;
+  // QActionGroup * toolbar_actions_;
+  // std::map<QAction *, Tool *> action_to_tool_map_;
+  // std::map<Tool *, QAction *> tool_to_action_map_;
   bool show_choose_new_master_option_;
 
   QToolButton * hide_left_dock_button_;

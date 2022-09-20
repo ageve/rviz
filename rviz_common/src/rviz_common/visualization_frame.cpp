@@ -70,20 +70,21 @@
 #include "rviz_common/tool.hpp"
 #include "rviz_common/yaml_config_reader.hpp"
 #include "rviz_common/yaml_config_writer.hpp"
+#include "rviz_common/panel_factory.hpp"
+
 #include "rviz_rendering/render_window.hpp"
 
 #include "./env_config.hpp"
 #include "./failed_panel.hpp"
 #include "./loading_dialog.hpp"
 #include "./new_object_dialog.hpp"
-#include "./panel_factory.hpp"
 #include "./screenshot_dialog.hpp"
 #include "./splash_screen.hpp"
 #include "rviz_common/tool_manager.hpp"
 #include "rviz_common/visualization_manager.hpp"
 #include "./widget_geometry_change_detector.hpp"
 
-// #include "./displays_panel.hpp"
+// #include "rviz_common/displays_panel.hpp"
 #include "./help_panel.hpp"
 // #include "./interaction/selection_manager.hpp"
 // #include "./selection_panel.hpp"
@@ -164,6 +165,16 @@ VisualizationFrame::~VisualizationFrame()
   }
 
   delete panel_factory_;
+}
+
+QToolBar * VisualizationFrame::getToolbar()
+{
+  return toolbar_;
+}
+
+rviz_common::RenderPanel * VisualizationFrame::getRenderPanel()
+{
+  return render_panel_;
 }
 
 rviz_rendering::RenderWindow * VisualizationFrame::getRenderWindow()
@@ -1082,6 +1093,14 @@ void VisualizationFrame::onToolbarRemoveTool(QAction * remove_tool_menu_action)
       manager_->getToolManager()->removeTool(i);
       return;
     }
+  }
+}
+
+void VisualizationFrame::removeAllTools()
+{
+  for (int i = 0; i < manager_->getToolManager()->numTools(); i++) {
+    Tool * tool = manager_->getToolManager()->getTool(i);
+    manager_->getToolManager()->removeTool(i);
   }
 }
 

@@ -75,7 +75,7 @@ set(rviz_common_headers_to_moc
   include/rviz_common/visualizer_app.hpp
   include/rviz_common/display.hpp
   include/rviz_common/display_context.hpp
-  src/rviz_common/displays_panel.hpp
+  include/rviz_common/displays_panel.hpp
   src/rviz_common/failed_panel.hpp
   src/rviz_common/frame_manager.hpp
   include/rviz_common/frame_manager_iface.hpp
@@ -109,6 +109,7 @@ set(rviz_common_headers_to_moc
   include/rviz_common/properties/vector_property.hpp
   include/rviz_common/render_panel.hpp
   include/rviz_common/visualization_manager.hpp
+  include/rviz_common/panel_factory.hpp
   src/rviz_common/scaled_image_widget.hpp
   src/rviz_common/screenshot_dialog.hpp
   include/rviz_common/interaction/selection_manager.hpp
